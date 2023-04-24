@@ -12,15 +12,15 @@ system.Set_G_acc(chrono.ChVectorD(0, -9.81, 0))
 mat = chrono.ChMaterialSurfaceNSC()
 mat.SetFriction(.4)
 
-table_thickness = 0.2
-table_pos_y = -1.2
-table = chrono.ChBodyEasyBox(5, table_thickness, 5, 1000, True, True, mat)
-system.AddBody(table)
-table.SetIdentifier(2)
-table.SetBodyFixed(True)
-table.SetName("table")
-table.SetPos(chrono.ChVectorD(0, table_pos_y, 0))
-table.GetVisualShape(0).SetColor(chrono.ChColor(1, 0.2, 0.2))
+bridge_thickness = 0.2
+bridge_pos_y = -1.2
+drawbridge = chrono.ChBodyEasyBox(3, bridge_thickness, 3, 1000, True, True, mat)
+system.AddBody(drawbridge)
+drawbridge.SetIdentifier(2)
+drawbridge.SetBodyFixed(True)
+drawbridge.SetName("drawbridge")
+drawbridge.SetPos(chrono.ChVectorD(0, bridge_pos_y, 0))
+drawbridge.GetVisualShape(0).SetColor(chrono.ChColor(.47, .79, .79))
 
 vis = chronoirr.ChVisualSystemIrrlicht()
 vis.AttachSystem(system)
@@ -32,7 +32,7 @@ vis.AddSkyBox()
 vis.AddCamera(chrono.ChVectorD(-0.5, 0.5, 3))
 vis.AddTypicalLights()
 
-time_end = 4
+time_end = 30
 
 while (vis.Run() and system.GetChTime() < time_end):
     
